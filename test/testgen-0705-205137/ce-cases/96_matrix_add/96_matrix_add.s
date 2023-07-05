@@ -1,0 +1,325 @@
+	.cpu cortex-a7
+	.arch armv7ve
+	.fpu vfpv4
+
+	.text
+
+	.global add
+add:
+.BLOCK_0:
+	SUB sp, sp, #40
+	MOV VR_23, #56
+	LDR VR_22, [sp, VR_23]
+	MOV VR_21, #52
+	LDR VR_20, [sp, VR_21]
+	MOV VR_19, #48
+	LDR VR_18, [sp, VR_19]
+	MOV VR_17, #44
+	LDR VR_16, [sp, VR_17]
+	MOV VR_15, #40
+	LDR VR_14, [sp, VR_15]
+	MOV VR_13, r3
+	MOV VR_12, r2
+	MOV VR_11, r1
+	MOV VR_10, r0
+	ADD VR_0, sp, #0
+	ADD VR_1, sp, #4
+	ADD VR_2, sp, #8
+	ADD VR_3, sp, #12
+	ADD VR_4, sp, #16
+	ADD VR_5, sp, #20
+	ADD VR_6, sp, #24
+	ADD VR_7, sp, #28
+	ADD VR_8, sp, #32
+	ADD VR_9, sp, #36
+	STR VR_10, [VR_9]
+	STR VR_11, [VR_8]
+	STR VR_12, [VR_7]
+	STR VR_13, [VR_6]
+	STR VR_14, [VR_5]
+	STR VR_16, [VR_4]
+	STR VR_18, [VR_3]
+	STR VR_20, [VR_2]
+	STR VR_22, [VR_1]
+	MOV VR_24, #0
+	STR VR_24, [VR_0]
+	B .BLOCK_1
+.BLOCK_1:
+	LDR VR_25, [VR_0]
+	MOVW VR_27, :lower16:M
+	MOVT VR_27, :upper16:M
+	LDR VR_26, [VR_27]
+	CMP VR_25, VR_26
+	BLT .BLOCK_2
+	BGE .BLOCK_3
+.BLOCK_2:
+	LDR VR_28, [VR_3]
+	LDR VR_29, [VR_0]
+	ADD VR_30, VR_28, VR_29, LSL #2
+	LDR VR_31, [VR_9]
+	LDR VR_32, [VR_0]
+	ADD VR_33, VR_31, VR_32, LSL #2
+	VLDR EVR_0, [VR_33]
+	LDR VR_34, [VR_6]
+	LDR VR_35, [VR_0]
+	ADD VR_36, VR_34, VR_35, LSL #2
+	VLDR EVR_1, [VR_36]
+	VADD.F32 EVR_2, EVR_0, EVR_1
+	VSTR EVR_2, [VR_30]
+	LDR VR_37, [VR_2]
+	LDR VR_38, [VR_0]
+	ADD VR_39, VR_37, VR_38, LSL #2
+	LDR VR_40, [VR_8]
+	LDR VR_41, [VR_0]
+	ADD VR_42, VR_40, VR_41, LSL #2
+	VLDR EVR_3, [VR_42]
+	LDR VR_43, [VR_5]
+	LDR VR_44, [VR_0]
+	ADD VR_45, VR_43, VR_44, LSL #2
+	VLDR EVR_4, [VR_45]
+	VADD.F32 EVR_5, EVR_3, EVR_4
+	VSTR EVR_5, [VR_39]
+	LDR VR_46, [VR_1]
+	LDR VR_47, [VR_0]
+	ADD VR_48, VR_46, VR_47, LSL #2
+	LDR VR_49, [VR_7]
+	LDR VR_50, [VR_0]
+	ADD VR_51, VR_49, VR_50, LSL #2
+	VLDR EVR_6, [VR_51]
+	LDR VR_52, [VR_4]
+	LDR VR_53, [VR_0]
+	ADD VR_54, VR_52, VR_53, LSL #2
+	VLDR EVR_7, [VR_54]
+	VADD.F32 EVR_8, EVR_6, EVR_7
+	VSTR EVR_8, [VR_48]
+	LDR VR_55, [VR_0]
+	ADD VR_56, VR_55, #1
+	STR VR_56, [VR_0]
+	B .BLOCK_1
+.BLOCK_3:
+	MOV r0, #0
+	ADD sp, sp, #40
+	BX lr
+.BLOCK_4:
+	MOV r0, #0
+	ADD sp, sp, #40
+	BX lr
+
+
+	.global main
+main:
+.BLOCK_5:
+	SUB sp, sp, #128
+	ADD VR_0, sp, #0
+	ADD VR_1, sp, #4
+	ADD VR_2, sp, #8
+	ADD VR_3, sp, #20
+	ADD VR_4, sp, #32
+	ADD VR_5, sp, #56
+	ADD VR_6, sp, #68
+	ADD VR_7, sp, #80
+	ADD VR_8, sp, #92
+	ADD VR_9, sp, #104
+	ADD VR_10, sp, #116
+	MOVW VR_11, :lower16:N
+	MOVT VR_11, :upper16:N
+	MOV VR_12, #3
+	STR VR_12, [VR_11]
+	MOVW VR_13, :lower16:M
+	MOVT VR_13, :upper16:M
+	MOV VR_14, #3
+	STR VR_14, [VR_13]
+	MOVW VR_15, :lower16:L
+	MOVT VR_15, :upper16:L
+	MOV VR_16, #3
+	STR VR_16, [VR_15]
+	MOV VR_17, #0
+	STR VR_17, [VR_1]
+	B .BLOCK_6
+.BLOCK_6:
+	LDR VR_18, [VR_1]
+	MOVW VR_20, :lower16:M
+	MOVT VR_20, :upper16:M
+	LDR VR_19, [VR_20]
+	CMP VR_18, VR_19
+	BLT .BLOCK_7
+	BGE .BLOCK_8
+.BLOCK_7:
+	LDR VR_21, [VR_1]
+	ADD VR_22, VR_10, VR_21, LSL #2
+	LDR VR_23, [VR_1]
+	VMOV EVR_0, VR_23
+	VCVT.F32.S32 EVR_1, EVR_0
+	VSTR EVR_1, [VR_22]
+	LDR VR_24, [VR_1]
+	ADD VR_25, VR_9, VR_24, LSL #2
+	LDR VR_26, [VR_1]
+	VMOV EVR_2, VR_26
+	VCVT.F32.S32 EVR_3, EVR_2
+	VSTR EVR_3, [VR_25]
+	LDR VR_27, [VR_1]
+	ADD VR_28, VR_8, VR_27, LSL #2
+	LDR VR_29, [VR_1]
+	VMOV EVR_4, VR_29
+	VCVT.F32.S32 EVR_5, EVR_4
+	VSTR EVR_5, [VR_28]
+	LDR VR_30, [VR_1]
+	ADD VR_31, VR_7, VR_30, LSL #2
+	LDR VR_32, [VR_1]
+	VMOV EVR_6, VR_32
+	VCVT.F32.S32 EVR_7, EVR_6
+	VSTR EVR_7, [VR_31]
+	LDR VR_33, [VR_1]
+	ADD VR_34, VR_6, VR_33, LSL #2
+	LDR VR_35, [VR_1]
+	VMOV EVR_8, VR_35
+	VCVT.F32.S32 EVR_9, EVR_8
+	VSTR EVR_9, [VR_34]
+	LDR VR_36, [VR_1]
+	ADD VR_37, VR_5, VR_36, LSL #2
+	LDR VR_38, [VR_1]
+	VMOV EVR_10, VR_38
+	VCVT.F32.S32 EVR_11, EVR_10
+	VSTR EVR_11, [VR_37]
+	LDR VR_39, [VR_1]
+	ADD VR_40, VR_39, #1
+	STR VR_40, [VR_1]
+	B .BLOCK_6
+.BLOCK_8:
+	MOV VR_41, VR_10
+	MOV VR_42, VR_9
+	MOV VR_43, VR_8
+	MOV VR_44, VR_7
+	MOV VR_45, VR_6
+	MOV VR_46, VR_5
+	MOV VR_47, VR_4
+	MOV VR_48, VR_3
+	MOV VR_49, VR_2
+	STR VR_49, [sp, #-4]
+	STR VR_48, [sp, #-8]
+	STR VR_47, [sp, #-12]
+	STR VR_46, [sp, #-16]
+	STR VR_45, [sp, #-20]
+	MOV r3, VR_44
+	MOV r2, VR_43
+	MOV r1, VR_42
+	MOV r0, VR_41
+	SUB sp, sp, #20
+	BL add
+	ADD sp, sp, #20
+	MOV VR_50, r0
+	STR VR_50, [VR_1]
+	B .BLOCK_9
+.BLOCK_9:
+	LDR VR_51, [VR_1]
+	MOVW VR_53, :lower16:N
+	MOVT VR_53, :upper16:N
+	LDR VR_52, [VR_53]
+	CMP VR_51, VR_52
+	BLT .BLOCK_10
+	BGE .BLOCK_11
+.BLOCK_10:
+	LDR VR_54, [VR_1]
+	ADD VR_55, VR_4, VR_54, LSL #2
+	VLDR EVR_12, [VR_55]
+	VCVT.S32.F32 EVR_13, EVR_12
+	VMOV VR_56, EVR_13
+	STR VR_56, [VR_0]
+	LDR VR_57, [VR_0]
+	MOV r0, VR_57
+	BL putint
+	LDR VR_58, [VR_1]
+	ADD VR_59, VR_58, #1
+	STR VR_59, [VR_1]
+	B .BLOCK_9
+.BLOCK_11:
+	MOV VR_60, #10
+	STR VR_60, [VR_0]
+	LDR VR_61, [VR_0]
+	MOV r0, VR_61
+	BL putch
+	MOV VR_62, #0
+	STR VR_62, [VR_1]
+	B .BLOCK_12
+.BLOCK_12:
+	LDR VR_63, [VR_1]
+	MOVW VR_65, :lower16:N
+	MOVT VR_65, :upper16:N
+	LDR VR_64, [VR_65]
+	CMP VR_63, VR_64
+	BLT .BLOCK_13
+	BGE .BLOCK_14
+.BLOCK_13:
+	LDR VR_66, [VR_1]
+	ADD VR_67, VR_3, VR_66, LSL #2
+	VLDR EVR_14, [VR_67]
+	VCVT.S32.F32 EVR_15, EVR_14
+	VMOV VR_68, EVR_15
+	STR VR_68, [VR_0]
+	LDR VR_69, [VR_0]
+	MOV r0, VR_69
+	BL putint
+	LDR VR_70, [VR_1]
+	ADD VR_71, VR_70, #1
+	STR VR_71, [VR_1]
+	B .BLOCK_12
+.BLOCK_14:
+	MOV VR_72, #10
+	STR VR_72, [VR_0]
+	LDR VR_73, [VR_0]
+	MOV r0, VR_73
+	BL putch
+	MOV VR_74, #0
+	STR VR_74, [VR_1]
+	B .BLOCK_15
+.BLOCK_15:
+	LDR VR_75, [VR_1]
+	MOVW VR_77, :lower16:N
+	MOVT VR_77, :upper16:N
+	LDR VR_76, [VR_77]
+	CMP VR_75, VR_76
+	BLT .BLOCK_16
+	BGE .BLOCK_17
+.BLOCK_16:
+	LDR VR_78, [VR_1]
+	ADD VR_79, VR_2, VR_78, LSL #2
+	VLDR EVR_16, [VR_79]
+	VCVT.S32.F32 EVR_17, EVR_16
+	VMOV VR_80, EVR_17
+	STR VR_80, [VR_0]
+	LDR VR_81, [VR_0]
+	MOV r0, VR_81
+	BL putint
+	LDR VR_82, [VR_1]
+	ADD VR_83, VR_82, #1
+	STR VR_83, [VR_1]
+	B .BLOCK_15
+.BLOCK_17:
+	MOV VR_84, #10
+	STR VR_84, [VR_0]
+	LDR VR_85, [VR_0]
+	MOV r0, VR_85
+	BL putch
+	MOV r0, #0
+	ADD sp, sp, #128
+	POP {pc}
+.BLOCK_18:
+	MOV r0, #0
+	ADD sp, sp, #128
+	POP {pc}
+
+
+	.data
+	.align 4
+	.global M
+M:
+	.zero	4
+	.global L
+L:
+	.zero	4
+	.global N
+N:
+	.zero	4
+
+
+	.end

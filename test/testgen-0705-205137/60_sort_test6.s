@@ -1,0 +1,248 @@
+	.cpu cortex-a7
+	.arch armv7ve
+	.fpu vfpv4
+
+	.text
+
+	.global counting_sort
+counting_sort:
+.BLOCK_0:
+	SUB sp, sp, #64
+	MOV VR_9, r2
+	MOV VR_8, r1
+	MOV VR_7, r0
+	ADD VR_0, sp, #0
+	ADD VR_1, sp, #4
+	ADD VR_2, sp, #8
+	ADD VR_3, sp, #12
+	ADD VR_4, sp, #52
+	ADD VR_5, sp, #56
+	ADD VR_6, sp, #60
+	STR VR_7, [VR_6]
+	STR VR_8, [VR_5]
+	STR VR_9, [VR_4]
+	MOV VR_10, #0
+	STR VR_10, [VR_0]
+	MOV VR_11, #0
+	STR VR_11, [VR_2]
+	MOV VR_12, #0
+	STR VR_12, [VR_1]
+	B .BLOCK_1
+.BLOCK_1:
+	LDR VR_13, [VR_0]
+	CMP VR_13, #10
+	BLT .BLOCK_2
+	BGE .BLOCK_3
+.BLOCK_2:
+	LDR VR_14, [VR_0]
+	ADD VR_15, VR_3, VR_14, LSL #2
+	MOV VR_16, #0
+	STR VR_16, [VR_15]
+	LDR VR_17, [VR_0]
+	ADD VR_18, VR_17, #1
+	STR VR_18, [VR_0]
+	B .BLOCK_1
+.BLOCK_3:
+	B .BLOCK_4
+.BLOCK_4:
+	LDR VR_19, [VR_2]
+	LDR VR_20, [VR_4]
+	CMP VR_19, VR_20
+	BLT .BLOCK_5
+	BGE .BLOCK_6
+.BLOCK_5:
+	LDR VR_21, [VR_6]
+	LDR VR_22, [VR_2]
+	ADD VR_23, VR_21, VR_22, LSL #2
+	LDR VR_24, [VR_23]
+	ADD VR_25, VR_3, VR_24, LSL #2
+	LDR VR_26, [VR_6]
+	LDR VR_27, [VR_2]
+	ADD VR_28, VR_26, VR_27, LSL #2
+	LDR VR_29, [VR_28]
+	ADD VR_30, VR_3, VR_29, LSL #2
+	LDR VR_31, [VR_30]
+	ADD VR_32, VR_31, #1
+	STR VR_32, [VR_25]
+	LDR VR_33, [VR_2]
+	ADD VR_34, VR_33, #1
+	STR VR_34, [VR_2]
+	B .BLOCK_4
+.BLOCK_6:
+	MOV VR_35, #1
+	STR VR_35, [VR_0]
+	B .BLOCK_7
+.BLOCK_7:
+	LDR VR_36, [VR_0]
+	CMP VR_36, #10
+	BLT .BLOCK_8
+	BGE .BLOCK_9
+.BLOCK_8:
+	LDR VR_37, [VR_0]
+	ADD VR_38, VR_3, VR_37, LSL #2
+	LDR VR_39, [VR_0]
+	ADD VR_40, VR_3, VR_39, LSL #2
+	LDR VR_41, [VR_40]
+	LDR VR_42, [VR_0]
+	SUB VR_43, VR_42, #1
+	ADD VR_44, VR_3, VR_43, LSL #2
+	LDR VR_45, [VR_44]
+	ADD VR_46, VR_41, VR_45
+	STR VR_46, [VR_38]
+	LDR VR_47, [VR_0]
+	ADD VR_48, VR_47, #1
+	STR VR_48, [VR_0]
+	B .BLOCK_7
+.BLOCK_9:
+	LDR VR_49, [VR_4]
+	STR VR_49, [VR_1]
+	B .BLOCK_10
+.BLOCK_10:
+	LDR VR_50, [VR_1]
+	CMP VR_50, #0
+	BGT .BLOCK_11
+	BLE .BLOCK_12
+.BLOCK_11:
+	LDR VR_51, [VR_6]
+	LDR VR_52, [VR_1]
+	SUB VR_53, VR_52, #1
+	ADD VR_54, VR_51, VR_53, LSL #2
+	LDR VR_55, [VR_54]
+	ADD VR_56, VR_3, VR_55, LSL #2
+	LDR VR_57, [VR_6]
+	LDR VR_58, [VR_1]
+	SUB VR_59, VR_58, #1
+	ADD VR_60, VR_57, VR_59, LSL #2
+	LDR VR_61, [VR_60]
+	ADD VR_62, VR_3, VR_61, LSL #2
+	LDR VR_63, [VR_62]
+	SUB VR_64, VR_63, #1
+	STR VR_64, [VR_56]
+	LDR VR_65, [VR_5]
+	LDR VR_66, [VR_6]
+	LDR VR_67, [VR_1]
+	SUB VR_68, VR_67, #1
+	ADD VR_69, VR_66, VR_68, LSL #2
+	LDR VR_70, [VR_69]
+	ADD VR_71, VR_3, VR_70, LSL #2
+	LDR VR_72, [VR_71]
+	ADD VR_73, VR_65, VR_72, LSL #2
+	LDR VR_74, [VR_6]
+	LDR VR_75, [VR_1]
+	SUB VR_76, VR_75, #1
+	ADD VR_77, VR_74, VR_76, LSL #2
+	LDR VR_78, [VR_77]
+	STR VR_78, [VR_73]
+	LDR VR_79, [VR_1]
+	SUB VR_80, VR_79, #1
+	STR VR_80, [VR_1]
+	B .BLOCK_10
+.BLOCK_12:
+	MOV r0, #0
+	ADD sp, sp, #64
+	BX lr
+.BLOCK_13:
+	MOV r0, #0
+	ADD sp, sp, #64
+	BX lr
+
+
+	.global main
+main:
+.BLOCK_14:
+	SUB sp, sp, #88
+	ADD VR_0, sp, #0
+	ADD VR_1, sp, #4
+	ADD VR_2, sp, #44
+	ADD VR_3, sp, #48
+	MOVW VR_4, :lower16:n
+	MOVT VR_4, :upper16:n
+	MOV VR_5, #10
+	STR VR_5, [VR_4]
+	MOV VR_6, VR_3
+	MOV VR_7, #4
+	STR VR_7, [VR_6]
+	ADD VR_8, VR_3, #4
+	MOV VR_9, #3
+	STR VR_9, [VR_8]
+	ADD VR_10, VR_3, #8
+	MOV VR_11, #9
+	STR VR_11, [VR_10]
+	ADD VR_12, VR_3, #12
+	MOV VR_13, #2
+	STR VR_13, [VR_12]
+	ADD VR_14, VR_3, #16
+	MOV VR_15, #0
+	STR VR_15, [VR_14]
+	ADD VR_16, VR_3, #20
+	MOV VR_17, #1
+	STR VR_17, [VR_16]
+	ADD VR_18, VR_3, #24
+	MOV VR_19, #6
+	STR VR_19, [VR_18]
+	ADD VR_20, VR_3, #28
+	MOV VR_21, #5
+	STR VR_21, [VR_20]
+	ADD VR_22, VR_3, #32
+	MOV VR_23, #7
+	STR VR_23, [VR_22]
+	ADD VR_24, VR_3, #36
+	MOV VR_25, #8
+	STR VR_25, [VR_24]
+	MOV VR_26, #0
+	STR VR_26, [VR_2]
+	MOV VR_27, VR_3
+	MOV VR_28, VR_1
+	MOVW VR_30, :lower16:n
+	MOVT VR_30, :upper16:n
+	LDR VR_29, [VR_30]
+	MOV r2, VR_29
+	MOV r1, VR_28
+	MOV r0, VR_27
+	BL counting_sort
+	MOV VR_31, r0
+	STR VR_31, [VR_2]
+	B .BLOCK_15
+.BLOCK_15:
+	LDR VR_32, [VR_2]
+	MOVW VR_34, :lower16:n
+	MOVT VR_34, :upper16:n
+	LDR VR_33, [VR_34]
+	CMP VR_32, VR_33
+	BLT .BLOCK_16
+	BGE .BLOCK_17
+.BLOCK_16:
+	LDR VR_35, [VR_2]
+	ADD VR_36, VR_1, VR_35, LSL #2
+	LDR VR_37, [VR_36]
+	STR VR_37, [VR_0]
+	LDR VR_38, [VR_0]
+	MOV r0, VR_38
+	BL putint
+	MOV VR_39, #10
+	STR VR_39, [VR_0]
+	LDR VR_40, [VR_0]
+	MOV r0, VR_40
+	BL putch
+	LDR VR_41, [VR_2]
+	ADD VR_42, VR_41, #1
+	STR VR_42, [VR_2]
+	B .BLOCK_15
+.BLOCK_17:
+	MOV r0, #0
+	ADD sp, sp, #88
+	POP {pc}
+.BLOCK_18:
+	MOV r0, #0
+	ADD sp, sp, #88
+	POP {pc}
+
+
+	.data
+	.align 4
+	.global n
+n:
+	.zero	4
+
+
+	.end

@@ -1,0 +1,276 @@
+	.cpu cortex-a7
+	.arch armv7ve
+	.fpu vfpv4
+
+	.text
+
+	.global QuickSort
+QuickSort:
+.BLOCK_0:
+	SUB sp, sp, #28
+	MOV VR_9, r2
+	MOV VR_8, r1
+	MOV VR_7, r0
+	ADD VR_0, sp, #0
+	ADD VR_1, sp, #4
+	ADD VR_2, sp, #8
+	ADD VR_3, sp, #12
+	ADD VR_4, sp, #16
+	ADD VR_5, sp, #20
+	ADD VR_6, sp, #24
+	STR VR_7, [VR_6]
+	STR VR_8, [VR_5]
+	STR VR_9, [VR_4]
+	B .BLOCK_1
+.BLOCK_1:
+	LDR VR_10, [VR_5]
+	LDR VR_11, [VR_4]
+	CMP VR_10, VR_11
+	BLT .BLOCK_3
+	BGE .BLOCK_2
+.BLOCK_2:
+	MOV r0, #0
+	ADD sp, sp, #28
+	POP {pc}
+.BLOCK_3:
+	LDR VR_12, [VR_5]
+	STR VR_12, [VR_3]
+	LDR VR_13, [VR_4]
+	STR VR_13, [VR_2]
+	LDR VR_14, [VR_6]
+	LDR VR_15, [VR_5]
+	ADD VR_16, VR_14, VR_15, LSL #2
+	LDR VR_17, [VR_16]
+	STR VR_17, [VR_1]
+	B .BLOCK_4
+.BLOCK_4:
+	LDR VR_18, [VR_3]
+	LDR VR_19, [VR_2]
+	CMP VR_18, VR_19
+	BLT .BLOCK_5
+	BGE .BLOCK_6
+.BLOCK_5:
+	B .BLOCK_7
+.BLOCK_6:
+	LDR VR_20, [VR_6]
+	LDR VR_21, [VR_3]
+	ADD VR_22, VR_20, VR_21, LSL #2
+	LDR VR_23, [VR_1]
+	STR VR_23, [VR_22]
+	LDR VR_24, [VR_3]
+	SUB VR_25, VR_24, #1
+	STR VR_25, [VR_0]
+	LDR VR_26, [VR_6]
+	LDR VR_27, [VR_5]
+	LDR VR_28, [VR_0]
+	MOV r2, VR_28
+	MOV r1, VR_27
+	MOV r0, VR_26
+	BL QuickSort
+	MOV VR_29, r0
+	STR VR_29, [VR_0]
+	LDR VR_30, [VR_3]
+	ADD VR_31, VR_30, #1
+	STR VR_31, [VR_0]
+	LDR VR_32, [VR_6]
+	LDR VR_33, [VR_0]
+	LDR VR_34, [VR_4]
+	MOV r2, VR_34
+	MOV r1, VR_33
+	MOV r0, VR_32
+	BL QuickSort
+	MOV VR_35, r0
+	STR VR_35, [VR_0]
+	B .BLOCK_2
+.BLOCK_7:
+	LDR VR_36, [VR_3]
+	LDR VR_37, [VR_2]
+	CMP VR_36, VR_37
+	BLT .BLOCK_10
+	BGE .BLOCK_9
+.BLOCK_8:
+	LDR VR_38, [VR_2]
+	SUB VR_39, VR_38, #1
+	STR VR_39, [VR_2]
+	B .BLOCK_7
+.BLOCK_9:
+	B .BLOCK_11
+.BLOCK_10:
+	LDR VR_40, [VR_6]
+	LDR VR_41, [VR_2]
+	ADD VR_42, VR_40, VR_41, LSL #2
+	LDR VR_43, [VR_42]
+	LDR VR_44, [VR_1]
+	SUB VR_45, VR_44, #1
+	CMP VR_43, VR_45
+	BGT .BLOCK_8
+	BLE .BLOCK_9
+.BLOCK_11:
+	LDR VR_46, [VR_3]
+	LDR VR_47, [VR_2]
+	CMP VR_46, VR_47
+	BLT .BLOCK_13
+	BGE .BLOCK_12
+.BLOCK_12:
+	B .BLOCK_14
+.BLOCK_13:
+	LDR VR_48, [VR_6]
+	LDR VR_49, [VR_3]
+	ADD VR_50, VR_48, VR_49, LSL #2
+	LDR VR_51, [VR_6]
+	LDR VR_52, [VR_2]
+	ADD VR_53, VR_51, VR_52, LSL #2
+	LDR VR_54, [VR_53]
+	STR VR_54, [VR_50]
+	LDR VR_55, [VR_3]
+	ADD VR_56, VR_55, #1
+	STR VR_56, [VR_3]
+	B .BLOCK_12
+.BLOCK_14:
+	LDR VR_57, [VR_3]
+	LDR VR_58, [VR_2]
+	CMP VR_57, VR_58
+	BLT .BLOCK_17
+	BGE .BLOCK_16
+.BLOCK_15:
+	LDR VR_59, [VR_3]
+	ADD VR_60, VR_59, #1
+	STR VR_60, [VR_3]
+	B .BLOCK_14
+.BLOCK_16:
+	B .BLOCK_18
+.BLOCK_17:
+	LDR VR_61, [VR_6]
+	LDR VR_62, [VR_3]
+	ADD VR_63, VR_61, VR_62, LSL #2
+	LDR VR_64, [VR_63]
+	LDR VR_65, [VR_1]
+	CMP VR_64, VR_65
+	BLT .BLOCK_15
+	BGE .BLOCK_16
+.BLOCK_18:
+	LDR VR_66, [VR_3]
+	LDR VR_67, [VR_2]
+	CMP VR_66, VR_67
+	BLT .BLOCK_20
+	BGE .BLOCK_19
+.BLOCK_19:
+	B .BLOCK_4
+.BLOCK_20:
+	LDR VR_68, [VR_6]
+	LDR VR_69, [VR_2]
+	ADD VR_70, VR_68, VR_69, LSL #2
+	LDR VR_71, [VR_6]
+	LDR VR_72, [VR_3]
+	ADD VR_73, VR_71, VR_72, LSL #2
+	LDR VR_74, [VR_73]
+	STR VR_74, [VR_70]
+	LDR VR_75, [VR_2]
+	SUB VR_76, VR_75, #1
+	STR VR_76, [VR_2]
+	B .BLOCK_19
+.BLOCK_21:
+	MOV r0, #0
+	ADD sp, sp, #28
+	POP {pc}
+
+
+	.global main
+main:
+.BLOCK_22:
+	SUB sp, sp, #52
+	ADD VR_0, sp, #0
+	ADD VR_1, sp, #4
+	ADD VR_2, sp, #8
+	ADD VR_3, sp, #12
+	MOVW VR_4, :lower16:n
+	MOVT VR_4, :upper16:n
+	MOV VR_5, #10
+	STR VR_5, [VR_4]
+	MOV VR_6, VR_3
+	MOV VR_7, #4
+	STR VR_7, [VR_6]
+	ADD VR_8, VR_3, #4
+	MOV VR_9, #3
+	STR VR_9, [VR_8]
+	ADD VR_10, VR_3, #8
+	MOV VR_11, #9
+	STR VR_11, [VR_10]
+	ADD VR_12, VR_3, #12
+	MOV VR_13, #2
+	STR VR_13, [VR_12]
+	ADD VR_14, VR_3, #16
+	MOV VR_15, #0
+	STR VR_15, [VR_14]
+	ADD VR_16, VR_3, #20
+	MOV VR_17, #1
+	STR VR_17, [VR_16]
+	ADD VR_18, VR_3, #24
+	MOV VR_19, #6
+	STR VR_19, [VR_18]
+	ADD VR_20, VR_3, #28
+	MOV VR_21, #5
+	STR VR_21, [VR_20]
+	ADD VR_22, VR_3, #32
+	MOV VR_23, #7
+	STR VR_23, [VR_22]
+	ADD VR_24, VR_3, #36
+	MOV VR_25, #8
+	STR VR_25, [VR_24]
+	MOV VR_26, #0
+	STR VR_26, [VR_2]
+	MOV VR_27, #9
+	STR VR_27, [VR_1]
+	MOV VR_28, VR_3
+	LDR VR_29, [VR_2]
+	LDR VR_30, [VR_1]
+	MOV r2, VR_30
+	MOV r1, VR_29
+	MOV r0, VR_28
+	BL QuickSort
+	MOV VR_31, r0
+	STR VR_31, [VR_2]
+	B .BLOCK_23
+.BLOCK_23:
+	LDR VR_32, [VR_2]
+	MOVW VR_34, :lower16:n
+	MOVT VR_34, :upper16:n
+	LDR VR_33, [VR_34]
+	CMP VR_32, VR_33
+	BLT .BLOCK_24
+	BGE .BLOCK_25
+.BLOCK_24:
+	LDR VR_35, [VR_2]
+	ADD VR_36, VR_3, VR_35, LSL #2
+	LDR VR_37, [VR_36]
+	STR VR_37, [VR_0]
+	LDR VR_38, [VR_0]
+	MOV r0, VR_38
+	BL putint
+	MOV VR_39, #10
+	STR VR_39, [VR_0]
+	LDR VR_40, [VR_0]
+	MOV r0, VR_40
+	BL putch
+	LDR VR_41, [VR_2]
+	ADD VR_42, VR_41, #1
+	STR VR_42, [VR_2]
+	B .BLOCK_23
+.BLOCK_25:
+	MOV r0, #0
+	ADD sp, sp, #52
+	POP {pc}
+.BLOCK_26:
+	MOV r0, #0
+	ADD sp, sp, #52
+	POP {pc}
+
+
+	.data
+	.align 4
+	.global n
+n:
+	.zero	4
+
+
+	.end
