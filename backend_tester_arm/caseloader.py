@@ -4,8 +4,8 @@ from pathlib import Path
 from sys import stdout
 import shutil
 
-IN = '/root/test/functional'
-STD_OUT = '/root/test/functional'
+IN = '/root/test/functional/'
+STD_OUT = '/root/test/functional/'
 
 class TestCase:
     """A TestCase store the path to a single testcase and its metadata.
