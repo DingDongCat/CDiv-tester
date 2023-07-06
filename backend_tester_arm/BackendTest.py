@@ -69,8 +69,6 @@ class BackendAutoTester:
                     cnt_compilerr += 1
                     # Copy the error-compiled testcase to the CE-directory.
                     p = testcase.copy_to(self.compilerr_dir)
-
-                    self.run_debug()
                 else:
                     self.run_asm(o_path, out_path, testcase.in_path)
                     if self.match(out_path, testcase.std_out_path):
@@ -82,8 +80,6 @@ class BackendAutoTester:
                         # Copy the wrongly answered testcase to the WA-directory.
                         p = testcase.copy_to(self.wrongans_dir)
                         shutil.copyfile(out_path, p/testcase.gen_out_name)
-
-                        # self.run_debug(testcase)
                 
                 log = (
                     str(testcase.s_path).ljust(self.max_path_width, ' ')
