@@ -9,6 +9,14 @@ g = repo.git
 while True:
     try:
         g.pull()
+    except Exception as e:
+        print(e)
+    else:
+        print("Successful pull!")
+        break
+    
+while True:
+    try:
         g.add("--all")
         g.commit("-m auto update")
         g.push()
@@ -17,3 +25,4 @@ while True:
     else:
         print("Successful pull!")
         break
+    
