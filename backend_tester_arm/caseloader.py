@@ -9,22 +9,22 @@ STD_OUT = '/root/CDiv-testcases/functional/'
 
 class TestCase:
     """A TestCase store the path to a single testcase and its metadata.
-    
+
     Attributes:
-        s_path: A Path to the source (.sy) 
+        s_path: A Path to the source (.sy)
         in_path: A Path to the possible input file (.in)
         std_out_path: A Path to the standard output file (.out)
         name: A string of the testcase name w/o file type postfix
         ll_name: A string of file name of llvm-ir generated (.ll)
         bc_name: A string of file name of the interpretable bitcode file after linking (.bc)
-        gen_out_name: A string of file name of the execution output from the compiled program 
+        gen_out_name: A string of file name of the execution output from the compiled program
                     (-gen.out)
     """
 
     def __init__(self, s_path:str, std_out_path:str, in_path:str=None) -> None:
         """Initialzie a TestCase.
         """
-        # Path to the source (.s) 
+        # Path to the source (.s)
         self.s_path = Path(s_path)
         # Path to the possible input file (.in)
         self.in_path = Path(in_path) if in_path else None
@@ -64,13 +64,13 @@ class Loader:
 
     def __init__(self, path:str) -> None:
         """Intialize a Load according to a given path.
-        
+
         If the path points to a testable file (.sy file), load the file specified
         as a single TestCase. If the path points to an existing directory, load all
         testable files under the directory into the testcase list.
         """
         self.testcases = []
-        
+
 
         p = Path(path)
         # If the path points to a testable file (.s).
@@ -85,9 +85,6 @@ class Loader:
                 std_out_path = Path(STD_OUT + (file.name.replace(".s", ".out")))
                 in_path = Path(IN + (file.name.replace(".s", ".in")))
                 self.testcases.append(TestCase(file, std_out_path, in_path if in_path.exists() else None))
-
-class DebugLoader:
-    ...
 
 
 if __name__ == '__main__':

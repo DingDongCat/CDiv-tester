@@ -10,15 +10,15 @@ from caseloader import TestCase, Loader
 
 
 class BackendAutoTester:
-    def __init__(self, gen_dir:str):
+    def __init__(self, gen_dir: str):
         self.root_dir = Path(gen_dir)
-        self.compilerr_dir = self.root_dir/"ce-cases"
-        self.wrongans_dir = self.root_dir/"wa-cases"
-        self.log_path = self.root_dir/"result.log"
-        self.stat_path = self.root_dir/"stat.log"
-        self.debug_path = self.root_dir/"debug.log"
+        self.compilerr_dir = self.root_dir / "ce-cases"
+        self.wrongans_dir = self.root_dir / "wa-cases"
+        self.log_path = self.root_dir / "result.log"
+        self.stat_path = self.root_dir / "stat.log"
+        self.debug_path = self.root_dir / "debug.log"
         self.max_path_width = 45
-        
+
         if self.wrongans_dir.exists():
             self.delete_dir(self.wrongans_dir)
         os.makedirs(self.wrongans_dir)
@@ -26,7 +26,7 @@ class BackendAutoTester:
             self.delete_dir(self.compilerr_dir)
         os.makedirs(self.compilerr_dir)
 
-    def delete_dir(self, path:Path):
+    def delete_dir(self, path: Path):
         if path.exists():
             if path.is_file():
                 path.unlink()
@@ -35,9 +35,8 @@ class BackendAutoTester:
                     self.delete_dir(file)
                 path.rmdir()
 
-
-    def run(self, 
-        testcases: List[TestCase], echo_ret:bool=True, terminal_log=True) -> None:
+    def run(self,
+            testcases: List[TestCase], echo_ret: bool = True, terminal_log=True) -> None:
         """Run through all the testcases to generate results.
 
         Args:
@@ -55,13 +54,13 @@ class BackendAutoTester:
         # Run.
         with open(self.log_path, 'a+') as log_file, open(self.stat_path, 'a+') as stat_file:
             # Loop through each test case.
-            for testcase in testcases:                
-                out_path = self.root_dir/testcase.gen_out_name
-                s_path = self.root_dir/testcase.s_path.name
+            for testcase in testcases:
+                out_path = self.root_dir / testcase.gen_out_name
+                s_path = self.root_dir / testcase.s_path.name
 
                 if terminal_log:
-                    print(str(testcase.s_path).ljust(self.max_path_width, ' ') + f' \tRunning', 
-                    end='\r')
+                    print(str(testcase.s_path).ljust(self.max_path_width, ' ') + f' \tRunning',
+                          end='\r')
 
                 o_path = self.gen_out(testcase)
                 if o_path is None:
@@ -69,6 +68,8 @@ class BackendAutoTester:
                     cnt_compilerr += 1
                     # Copy the error-compiled testcase to the CE-directory.
                     p = testcase.copy_to(self.compilerr_dir)
+
+                    self.run_debug(testcase)
                 else:
                     self.run_asm(o_path, out_path, testcase.in_path)
                     if self.match(out_path, testcase.std_out_path):
@@ -79,11 +80,11 @@ class BackendAutoTester:
                         cnt_wrongans += 1
                         # Copy the wrongly answered testcase to the WA-directory.
                         p = testcase.copy_to(self.wrongans_dir)
-                        shutil.copyfile(out_path, p/testcase.gen_out_name)
-                
+                        shutil.copyfile(out_path, p / testcase.gen_out_name)
+
                 log = (
-                    str(testcase.s_path).ljust(self.max_path_width, ' ')
-                    + f' \t{status}\n'
+                        str(testcase.s_path).ljust(self.max_path_width, ' ')
+                        + f' \t{status}\n'
                 )
                 log_file.write(log)
                 if terminal_log:
@@ -98,8 +99,7 @@ class BackendAutoTester:
             if terminal_log:
                 print(stat_conclu, end='')
 
-    
-    def gen_out(self, testcase:TestCase) -> str:
+    def gen_out(self, testcase: TestCase) -> str:
         # Compile the .sy file with our compiler.
         out_path = self.root_dir / testcase.name
         cmd_compile = (
@@ -119,31 +119,29 @@ class BackendAutoTester:
         )
         # If the compiler didn't successfully generate an .ll file.
         if not os.path.exists(out_path):
-            self.run_debug(testcase)
             return None
 
         return out_path
 
-
-    def run_asm(self, 
-        o_path:str, out_path:str, in_path:Optional[str]=None, echo_ret:bool=True
-    ) -> None:
+    def run_asm(self,
+                o_path: str, out_path: str, in_path: Optional[str] = None, echo_ret: bool = True
+                ) -> None:
         cmd_run = f'./{o_path}'
         with open(out_path, 'w+', encoding="utf-8") as out_file:
             # Has input
-            if in_path is None: 
+            if in_path is None:
                 p = subprocess.run(
-                    cmd_run.split(), 
+                    cmd_run.split(),
                     stdout=out_file,
                     stderr=subprocess.DEVNULL,
                     encoding="utf-8"
                 )
             # No input
-            else:               
+            else:
                 with open(in_path, 'r') as in_file:
                     p = subprocess.run(
-                        cmd_run.split(), 
-                        stdin=in_file, 
+                        cmd_run.split(),
+                        stdin=in_file,
                         stdout=out_file,
                         stderr=subprocess.DEVNULL,
                         encoding="utf-8"
@@ -160,25 +158,19 @@ class BackendAutoTester:
                     if last_ch != '\n':
                         subprocess.run('echo', stdout=out_file)
                 subprocess.run(f'echo {p.returncode}'.split(), stdout=out_file)
-            
 
-    def match(self, file1:str, file2:str) -> bool:
+    def match(self, file1: str, file2: str) -> bool:
         return filecmp.cmp(file1, file2, shallow=False)
 
     def run_debug(self, testcase: TestCase):
         with open(self.debug_path, "a+") as debug_file:
-            cmd_compile = (
-                f"gcc"
-                f" {testcase.s_path}"
-                f" -L ."
-                f" -lsysy"
-                f" -march=armv7"
-            )
-            debug_content = subprocess.run(
-                cmd_compile.split(),
-                shell = True,
-                stdout=subprocess.PIPE
-            ).stdout
             debug_file.write(f"---------- {testcase.name} ----------\n")
-            debug_content = debug_content.decode("gbk")
-            debug_file.write(f"{debug_content}\n")
+            out_path = self.root_dir / testcase.name
+            cmd_compile = "gcc -march=armv7 %s 2>> %s" % (testcase.s_path, self.debug_path)
+
+            subprocess.Popen(
+                cmd_compile,
+                shell=True,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+            )
