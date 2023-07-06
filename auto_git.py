@@ -12,6 +12,7 @@ while True:
         g.commit("-m auto update")
     except Exception as e:
         print(e)
+        break
     else:
         print("Successful commit!")
         break
