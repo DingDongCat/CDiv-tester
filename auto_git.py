@@ -19,10 +19,17 @@ while True:
     try:
         g.add("--all")
         g.commit("-m auto update")
+    except Exception as e:
+        print(e)
+    else:
+        print("Successful commit!")
+        break
+
+while True:
+    try:
         g.push()
     except Exception as e:
         print(e)
     else:
         print("Successful push!")
         break
-    
