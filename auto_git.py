@@ -8,21 +8,22 @@ g = repo.git
 
 while True:
     try:
+        g.add("--all")
+        g.commit("-m auto update")
+    except Exception as e:
+        print(e)
+        break
+    else:
+        print("Successful commit!")
+        break
+
+while True:
+    try:
         g.pull()
     except Exception as e:
         print(e)
     else:
         print("Successful pull!")
-        break
-    
-while True:
-    try:
-        g.add("--all")
-        g.commit("-m auto update")
-    except Exception as e:
-        print(e)
-    else:
-        print("Successful commit!")
         break
 
 while True:
