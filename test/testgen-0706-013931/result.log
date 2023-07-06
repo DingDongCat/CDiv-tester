@@ -1132,3 +1132,61 @@
 /root/CDiv-tester/test/testgen-0706-013931/47_hex_oct_add.s      	Accecpted
 /root/CDiv-tester/test/testgen-0706-013931/67_reverse_output.s   	Compilation Error
 /root/CDiv-tester/test/testgen-0706-013931/84_long_array2.s      	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/00_main.s             	Wrong Answer
+/root/CDiv-tester/test/testgen-0706-013931/01_var_defn2.s        	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/02_var_defn3.s        	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/03_arr_defn2.s        	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/06_const_var_defn2.s  	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/07_const_var_defn3.s  	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/08_const_array_defn.s 	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/09_func_defn.s        	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/10_var_defn_func.s    	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/11_add2.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/12_addc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/13_sub2.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/14_subc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/15_mul.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/16_mulc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/17_div.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/18_divc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/19_mod.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/20_rem.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/34_arr_expr_len.s     	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/35_op_priority1.s     	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/37_op_priority3.s     	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/42_empty_stmt.s       	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/44_stmt_expr.s        	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/45_comment1.s         	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/46_hex_defn.s         	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/47_hex_oct_add.s      	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/67_reverse_output.s   	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/84_long_array2.s      	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/00_main.s             	Wrong Answer
+/root/CDiv-tester/test/testgen-0706-013931/01_var_defn2.s        	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/02_var_defn3.s        	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/03_arr_defn2.s        	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/06_const_var_defn2.s  	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/07_const_var_defn3.s  	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/08_const_array_defn.s 	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/09_func_defn.s        	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/10_var_defn_func.s    	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/11_add2.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/12_addc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/13_sub2.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/14_subc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/15_mul.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/16_mulc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/17_div.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/18_divc.s             	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/19_mod.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/20_rem.s              	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/34_arr_expr_len.s     	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/35_op_priority1.s     	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/37_op_priority3.s     	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/42_empty_stmt.s       	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/44_stmt_expr.s        	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/45_comment1.s         	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/46_hex_defn.s         	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/47_hex_oct_add.s      	Accecpted
+/root/CDiv-tester/test/testgen-0706-013931/67_reverse_output.s   	Compilation Error
+/root/CDiv-tester/test/testgen-0706-013931/84_long_array2.s      	Compilation Error
