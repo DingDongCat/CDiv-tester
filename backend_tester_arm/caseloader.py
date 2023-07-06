@@ -86,6 +86,9 @@ class Loader:
                 in_path = Path(IN + (file.name.replace(".s", ".in")))
                 self.testcases.append(TestCase(file, std_out_path, in_path if in_path.exists() else None))
 
+class DebugLoader:
+    ...
+
 
 if __name__ == '__main__':
     loader = Loader('/home/phoenix/opt/test/testgen-0705-200747')

@@ -2,7 +2,7 @@ from BackendTest import BackendAutoTester
 from caseloader import Loader
 
 if __name__ == '__main__':
-    path = '../test/testgen-0705-205137'
+    path = '../test/testgen-0706-013931'
 
     tester = BackendAutoTester(path)
     loader = Loader(path)

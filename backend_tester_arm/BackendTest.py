@@ -16,6 +16,7 @@ class BackendAutoTester:
         self.wrongans_dir = self.root_dir/"wa-cases"
         self.log_path = self.root_dir/"result.log"
         self.stat_path = self.root_dir/"stat.log"
+        self.debug_path = self.root_dir/"debug.log"
         self.max_path_width = 45
         
         if self.wrongans_dir.exists():
@@ -68,6 +69,8 @@ class BackendAutoTester:
                     cnt_compilerr += 1
                     # Copy the error-compiled testcase to the CE-directory.
                     p = testcase.copy_to(self.compilerr_dir)
+
+                    self.run_debug()
                 else:
                     self.run_asm(o_path, out_path, testcase.in_path)
                     if self.match(out_path, testcase.std_out_path):
@@ -79,6 +82,8 @@ class BackendAutoTester:
                         # Copy the wrongly answered testcase to the WA-directory.
                         p = testcase.copy_to(self.wrongans_dir)
                         shutil.copyfile(out_path, p/testcase.gen_out_name)
+
+                        self.run_debug()
                 
                 log = (
                     str(testcase.s_path).ljust(self.max_path_width, ' ')
@@ -118,6 +123,7 @@ class BackendAutoTester:
         )
         # If the compiler didn't successfully generate an .ll file.
         if not os.path.exists(out_path):
+            self.run_debug(testcase)
             return None
 
         return out_path
@@ -162,3 +168,21 @@ class BackendAutoTester:
 
     def match(self, file1:str, file2:str) -> bool:
         return filecmp.cmp(file1, file2, shallow=False)
+
+    def run_debug(self, testCase: TestCase):
+        with open(self.debug_path, "a+") as debug_file:
+            cmd_compile = (
+                f"gcc"
+                f" {testcase.s_path}"
+                f" -L ."
+                f" -lsysy"
+                f" -march=armv7"
+            )
+            debug_content = subprocess.run(
+                cmd_compile.split(),
+                shell = True,
+                stdout=subprocess.PIPE
+            ).stdout
+            debug_file.write(f"---------- {testcase.name} ----------\n")
+            debug_content = debug_content.decode("gbk")
+            debug_file.write(f"{debug_content}\n")
