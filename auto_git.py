@@ -1,7 +1,7 @@
 from git import Repo
 import os
 
-
+# pip install gitpython
 dirfile = os.path.abspath('')
 repo = Repo(dirfile)
 g = repo.git
