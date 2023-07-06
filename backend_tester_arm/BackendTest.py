@@ -83,7 +83,7 @@ class BackendAutoTester:
                         p = testcase.copy_to(self.wrongans_dir)
                         shutil.copyfile(out_path, p/testcase.gen_out_name)
 
-                        self.run_debug()
+                        # self.run_debug(testcase)
                 
                 log = (
                     str(testcase.s_path).ljust(self.max_path_width, ' ')
