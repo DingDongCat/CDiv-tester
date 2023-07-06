@@ -126,7 +126,7 @@ class BackendAutoTester:
     def run_asm(self,
                 o_path: str, out_path: str, in_path: Optional[str] = None, echo_ret: bool = True
                 ) -> None:
-        cmd_run = f'./{o_path}'
+        cmd_run = f'{o_path}'
         with open(out_path, 'w+', encoding="utf-8") as out_file:
             # Has input
             if in_path is None:
