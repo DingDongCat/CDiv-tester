@@ -3,9 +3,9 @@ from backend_tester import BackendAutoTester
 from caseloader import Loader, TestCase
 
 COMPILER = "./CDiv-0.0.1.jar"
-JAVA = "D:/java/jdk17/bin/java"
+JAVA = "E:/Java/JDK17/bin/java"
 OUT_DIR = "./out"
-sftpArg = {'ip':'192.168.138.100','user':'phoenix','password':'ldf020103','port':22}
+sftpArg = {'ip':'192.168.179.100','user':'phoenix','password':'ldf020103','port':22}
 
 scheme_function2022 = {
     "path" : "testcases/functional",
