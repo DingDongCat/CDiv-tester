@@ -165,7 +165,7 @@ class BackendAutoTester:
     def match(self, file1:str, file2:str) -> bool:
         return filecmp.cmp(file1, file2, shallow=False)
 
-    def run_debug(self, testCase: TestCase):
+    def run_debug(self, testcase: TestCase):
         with open(self.debug_path, "a+") as debug_file:
             cmd_compile = (
                 f"gcc"
