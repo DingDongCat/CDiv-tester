@@ -25,7 +25,11 @@ while True:
     else:
         print("Successful pull!")
         break
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 1de21ec0383e734a32c6133ab09d41fd8901acec
 while True:
     try:
         g.push()
