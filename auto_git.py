@@ -23,6 +23,6 @@ while True:
     except Exception as e:
         print(e)
     else:
-        print("Successful pull!")
+        print("Successful push!")
         break
     
